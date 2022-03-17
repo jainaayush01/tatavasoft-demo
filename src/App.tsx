@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider, Typography } from "@material-ui/core";
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import "./assets/css/styles.css";
+import MainNavigation from "./component/MainNavigation";
+import { theme } from "./utils/theme";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
+const App: React.FC = () => {
+    return (
+        <ThemeProvider theme={theme}>
+            <Typography variant="h3" color="primary">
+                React Application
+            </Typography>
+            <React.Suspense fallback={<></>}>
+                <BrowserRouter>
+                    <MainNavigation />
+                </BrowserRouter>
+            </React.Suspense>
+        </ThemeProvider>
+    );
+};
 export default App;
